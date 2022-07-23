@@ -3,8 +3,9 @@
 #affiche les arguments qu'il recoit ligne par ligne, peu importe le nombre d'arguments sauf le $0
 puts $*
 
+#ou
 =begin
 for arg in ARGV
-   puts arg
+	puts arg
 end
 =end
