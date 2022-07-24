@@ -20,7 +20,7 @@ def longueurArgument(numeroArg)
         return i
 end
 
-if nombreArgument == 0 || nombreArgument > 1 || ARGV[0]=="0" || ARGV[0].to_i != 0
+if nombreArgument == 0 || nombreArgument > 1 || ARGV[0] == "0" || ARGV[0].to_i != 0
 	puts "erreur."
 else
         puts longueurArgument(0)

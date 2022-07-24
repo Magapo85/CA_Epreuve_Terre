@@ -27,7 +27,7 @@ if nombreArgument > 0 then #ARGV.length>0 then #test si un argument a été donn
 	end
 	allArgumentInv = ""
 	for i in 0 ... longueurArgument(allArgument) + 1 #allArgument.length+1
-		allArgumentInv += allArgument[longueurArgument(allArgument)-i].to_s #on inverse chaque caractere 1 par 1 dans une nouvelle variable
+		allArgumentInv += allArgument[longueurArgument(allArgument) - i].to_s #on inverse chaque caractere 1 par 1 dans une nouvelle variable
 	end
 	puts allArgumentInv
 end

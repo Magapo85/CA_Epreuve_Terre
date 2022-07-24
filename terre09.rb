@@ -1,6 +1,10 @@
 #!/usr/bin/env ruby
 
-#determine si l'argument donne est un entier pair ou impair (nombre positif ou negatif) et exception d'argument text
+#affiche le résultat d'une puissance, argument 1 nombre puis argument 2 l'exposant qui ne pourra pas etre négatif, gerer les potentielles erreurs d'arguments
+
+#pour gerer les decimal avec to_d ou Decimal() ou BigDecimal()
+#require 'bigdecimal'
+#require 'bigdecimal/util'
 
 #fonction utile qui trouve le nombre d'argument comme .length()
 def nombreArgument
@@ -35,22 +39,18 @@ def trouverDansArray(carac, array)
         return index, sortie
 end
 
-#fonction utile qui test si l'argument (nombre suppose entier) contient . ou , avant conversion et calcul
-def fauxEntier(nombre)
-        if trouverDansArray(",", nombre)[1] == "erreur" || trouverDansArray(".", nombre)[1] == "erreur"
+#fonction utile qui test si l'argument (nombre suppose entier) contient . ou , avant conversion et calcul 
+def fauxFloat(nombre)
+        if trouverDansArray(",", nombre)[1] == "erreur"
                 return "erreur"
         else
                 return "ok"
         end
 end
 
-#on prends l'argument d'entree et on convertie en nombre entier (positif negatif) ou 0 si texte ou 0
-valeur = ARGV[0].to_i
-
-if valeur == 0 || fauxEntier(ARGV[0]) == "erreur"
-	puts "Tu ne me la mettras pas à l'envers"
-elsif (valeur - 1) % 2 == 0
-	puts "impair"
+if nombreArgument > 2 || nombreArgument == 0 || fauxFloat(ARGV[0]) == "erreur" || fauxFloat(ARGV[1]) == "erreur" || ARGV[0].to_f == 0 || ARGV[1].to_f <= 0
+	puts "erreur"
 else
-	puts "pair"
+	puts (ARGV[0].to_f ** ARGV[1].to_f)
 end
+

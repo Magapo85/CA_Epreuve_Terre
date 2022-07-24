@@ -1,6 +1,10 @@
 #!/usr/bin/env ruby
 
-#determine si l'argument donne est un entier pair ou impair (nombre positif ou negatif) et exception d'argument text
+#affiche la racine carrée d'un entier positif en argument et gerer les potentielles erreurs d'arguments 
+
+#pour gerer les decimal avec to_d ou Decimal() ou BigDecimal()
+#require 'bigdecimal'
+#require 'bigdecimal/util'
 
 #fonction utile qui trouve le nombre d'argument comme .length()
 def nombreArgument
@@ -36,21 +40,17 @@ def trouverDansArray(carac, array)
 end
 
 #fonction utile qui test si l'argument (nombre suppose entier) contient . ou , avant conversion et calcul
-def fauxEntier(nombre)
-        if trouverDansArray(",", nombre)[1] == "erreur" || trouverDansArray(".", nombre)[1] == "erreur"
-                return "erreur"
-        else
-                return "ok"
-        end
+def fauxEntier(nombre) 
+	if trouverDansArray(",", nombre)[1] == "erreur" || trouverDansArray(".", nombre)[1] == "erreur"
+		return "erreur"
+	else
+		return "ok"
+	end 	
 end
 
-#on prends l'argument d'entree et on convertie en nombre entier (positif negatif) ou 0 si texte ou 0
-valeur = ARGV[0].to_i
-
-if valeur == 0 || fauxEntier(ARGV[0]) == "erreur"
-	puts "Tu ne me la mettras pas à l'envers"
-elsif (valeur - 1) % 2 == 0
-	puts "impair"
+if nombreArgument > 1 || nombreArgument == 0 || ARGV[0].to_i <= 0 || fauxEntier(ARGV[0]) == "erreur"  
+        puts "erreur"
 else
-	puts "pair"
+	puts (ARGV[0].to_i ** 0.5)#.to_i
 end
+
